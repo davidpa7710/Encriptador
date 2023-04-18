@@ -31,9 +31,9 @@ const copyClipboard = () => {
 button.addEventListener("click", handleClick)
 copyButton.addEventListener("click", () => {
     copyClipboard();
-    copyButton.innerHTML = '<em>Copiado <i class="fa-solid fa-clipboard"></i></em>';
+    copyButton.innerHTML = '<em>Copiado  <i class="fa-solid fa-clipboard-check fa-bounce fa-lg"></i></em>';
     setTimeout(() => {
-        copyButton.innerHTML = '<em>Copiar <i class="fa-regular fa-clipboard"></i></em>';
+        copyButton.innerHTML = '<a>Copiar <i class="fa-regular fa-clipboard fa-lg"></i></a>';
     }, 3000);
 });
 document.addEventListener('keydown', (e) => {
