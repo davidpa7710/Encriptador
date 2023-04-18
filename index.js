@@ -17,16 +17,26 @@ const handleClick = (e) => {
     e.preventDefault();
     const inputValue = input.value;
     const encript = inputValue.split("").map((letter) => {
-        if (letterMap[letter]) {
+       if (letterMap[letter]) {
             return letterMap[letter];
         }
         return letter;
     }).join("");
-    textArea.value = encript;
+    textArea.value = encript
 };
-
-button.addEventListener("click", handleClick)
-copyButton.addEventListener("click", () => {
+const copyClipboard = () => {
     navigator.clipboard.writeText(textArea.value)
     alert("texto copiado")
-})
+}
+
+button.addEventListener("click", handleClick)
+copyButton.addEventListener("click", copyClipboard)
+
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && event.key === 'c') {
+      textArea.select();
+      document.execCommand('copy');
+      alert('texto copiado');
+    }
+  });
+  
