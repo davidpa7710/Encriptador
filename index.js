@@ -7,17 +7,17 @@ textArea.readOnly = true;
 var copyButton = document.getElementById("btn-2")
 
 const letterMap = {
-   "a": "ai",
-   "e": "enter",
-   "i": "imes",
-   "o": "ober",
-   "u": "ufat"
+    "a": "ai",
+    "e": "enter",
+    "i": "imes",
+    "o": "ober",
+    "u": "ufat"
 }
 const handleClick = (e) => {
     e.preventDefault();
     const inputValue = input.value;
     const encript = inputValue.split("").map((letter) => {
-       if (letterMap[letter]) {
+        if (letterMap[letter]) {
             return letterMap[letter];
         }
         return letter;
@@ -26,17 +26,20 @@ const handleClick = (e) => {
 };
 const copyClipboard = () => {
     navigator.clipboard.writeText(textArea.value)
-    alert("texto copiado")
 }
 
 button.addEventListener("click", handleClick)
-copyButton.addEventListener("click", copyClipboard)
-
+copyButton.addEventListener("click", () => {
+    copyClipboard();
+    copyButton.innerHTML = '<em>Copiado <i class="fa-solid fa-clipboard"></i></em>';
+    setTimeout(() => {
+        copyButton.innerHTML = '<em>Copiar <i class="fa-regular fa-clipboard"></i></em>';
+    }, 3000);
+});
 document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && event.key === 'c') {
-      textArea.select();
-      document.execCommand('copy');
-      alert('texto copiado');
+    if (e.ctrlKey && e.key === 'c') {
+        textArea.select();
+        document.execCommand('copy');
+        alert('texto copiado');
     }
-  });
-  
+});
