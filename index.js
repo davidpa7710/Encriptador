@@ -7,6 +7,9 @@ textArea.readOnly = true;
 var copyButton = document.getElementById("btn-2")
 var button2 = document.getElementById("btn-3")
 
+
+console.log("hola mundo");
+
 const letterMap = {
     "a": "ai",
     "e": "enter",
